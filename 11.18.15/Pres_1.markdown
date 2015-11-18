@@ -1,4 +1,4 @@
-# Should go be your next?
+# Should Go be your next?
 
 Kansas City Go-lang meetup
 
