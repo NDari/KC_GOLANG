@@ -317,6 +317,9 @@ export PATH=$GOBIN:$PATH
 
 ## Resources
 
-- [Go by example](https://gobyexample.com/)
 - [Golang tour](https://tour.golang.org)
+- [Go by example](https://gobyexample.com/)
+- [Concurrency is not Parallelism](https://www.youtube.com/watch?v=cN_DpYBzKso)
+- [Advanced Concurrency Patterns](https://www.youtube.com/watch?v=QDDwwePbDtw)
+
 
