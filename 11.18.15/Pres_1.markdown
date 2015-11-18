@@ -1,8 +1,12 @@
-## Should go be your next?
+# Should go be your next?
+
+Kansas City Go-lang meetup
+
+11/18/2015
 
 ---
 
-### A little about me
+## A little about me
 
 - Physics background, Started coding in FORTRAN, then Fortran and C
 - Realized that I love programming with Perl
@@ -11,7 +15,7 @@
 
 ---
 
-### What kind of programming language is Go?
+## What kind of programming language is Go?
 
 - Strong, static types
 - Enforced by a **very** fast compiler
@@ -23,7 +27,7 @@
 
 ---
 
-### Obligatory "hello world!"
+## Obligatory "hello world!"
 
 ```go
 package main
@@ -40,15 +44,6 @@ func main() {
 
 - The "main" name of this package indicates that this will be an executable. Any other name will produce a static library.
 - The importing is done by `import "package"` where the package name in in quotes.
-- multiple packages can be imported by:
-
-```go
-import (
-    "package1"
-    "pakcage2"
-)
-```
-
 - The entry point to any Go executable is the `main` function, just like C or C++.
 - To get an exported item (Function, Struct, etc) out of a package, you use the dot notation
 - The case of the first letter of an item in a package indicates if it is exported or not.
