@@ -96,7 +96,30 @@ func myfilter(f func(int) bool, v []int) []int {
 [playground link](https://play.golang.org/p/rnE7aYRGZl)
 
 - Functions are first class objects.
-- Functions can have [closures](https://play.golang.org/p/barGYk2nhL)
+- Functions can have closures
+
+```go
+package main
+
+import "fmt"
+
+func main() {
+	inc, sum := accumulator(), accumulator()
+	for i := 0; i < 5; i++ {
+		fmt.Println("inc", inc(1), "\nsum", sum(i))
+	}
+}
+
+func accumulator() func(int) int {
+	sum := 0
+	return func(x int) int {
+		sum += x
+		return sum
+	}
+}
+```
+
+[playground link](https://play.golang.org/p/RahnonLxAX)
 
 ---
 
