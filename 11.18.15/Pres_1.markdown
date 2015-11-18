@@ -152,6 +152,9 @@ func main() {
 }
 ```
 
+- All arguments are pass by value, except slices.
+- Can pass by reference if you pass pointers to functions (more on this soon!)
+
 ---
 
 ## Structs
@@ -192,11 +195,25 @@ func main() {
 
 ## Methods
 
+Methods in go are just syntactic sugar for functions. Consider the two functions below:
+
 ```go
 func (p Person) SayHi() {
     fmt.Println("Hi! My name is", p.Name)
 }
+
+func SayHi2(p Person) {
+    fmt.Println("Hi! My name is", p.Name)
+}
 ```
+
+func (e Employee) ChangeID(newID int) {
+    e.ID = newID
+}
+```
+
+- The above function does **not** modify the employee. since everything is pass by value, a copy is made.
+- We can [fix this too](https://play.golang.org/p/WBCg6A9bui)
 
 ---
 
