@@ -65,7 +65,7 @@ func main() {
 	}
 
 	v := []float64{1.0, 2.0, 3.0, 4.0, 5.0}
-	fmt.Println(Map(square, v))
+	fmt.Println(map(square, v))
 
 	odd := func(i int) bool {
 		return i%2 == 0
@@ -75,7 +75,7 @@ func main() {
 	fmt.Println(filter(odd, t))
 }
 
-func Map(f func(float64) float64, v []float64) []float64 {
+func map(f func(float64) float64, v []float64) []float64 {
 	for i := 0; i < len(v); i++ {
 		v[i] = f(v[i])
 	}
