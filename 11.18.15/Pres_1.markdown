@@ -50,4 +50,52 @@ func main() {
 - All used packages must be imported, **and** all imported packages must be used. [goimports](https://godoc.org/golang.org/x/tools/cmd/goimports)
 - Automatic insertion of semi-colons, like Javascript. Nightmares, anyone? [gofmt](https://golang.org/cmd/gofmt/)
 
+---
 
+## Functions and functional programming
+
+```go
+func Map(f func(float) float, v []floa64) []float64 {
+    for i := 0; i < len(v); i++ {
+        v[i] = f(v[i])
+    }
+    return v
+}
+```
+
+- Functions are first class objects.
+- Functions can have [closures](https://play.golang.org/p/barGYk2nhL)
+
+---
+
+## Structs
+
+```go
+type Person struct {
+    Age  int
+    Name string
+}
+
+type Employee struct {
+    Person
+    ID     int
+}
+```
+
+[playground link](https://play.golang.org/p/-HfpOcNYpu)
+
+- Person is embedded into Employee. Allows direct access to Person's fields from Employee (Employee.Age, etc)
+- Also allows direct access to Person's methods as well (more on methods shortly)
+- Can overwrite the fields from Person by implementing it in Employee. `Employee.Name != Employee.Person.Name`
+- This is awful... [lets fix it](https://play.golang.org/p/PKPcmbOg8J)
+- Cannot initialize fields. They are automatically "zero-ed" out.
+
+---
+
+## Methods
+
+```go
+func (p Person) SayHi() {
+    fmt.Println("Hi! My name is", p.Name)
+}
+```
