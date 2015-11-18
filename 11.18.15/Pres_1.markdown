@@ -121,11 +121,48 @@ func accumulator() func(int) int {
 
 [playground link](https://play.golang.org/p/RahnonLxAX)
 
+- Function with variable number of arguments (veradic functions) are allowed.
+
+```go
+package main
+
+import "fmt"
+
+func sum(nums ...int) {
+    fmt.Print(nums, " ")
+    total := 0
+    for _, num := range nums {
+        total += num
+    }
+    fmt.Println(total)
+}
+
+func main() {
+
+    // Variadic functions can be called in the usual way
+    // with individual arguments.
+    sum(1, 2)
+    sum(1, 2, 3)
+
+    // If you already have multiple args in a slice,
+    // apply them to a variadic function using
+    // `func(slice...)` like this.
+    nums := []int{1, 2, 3, 4}
+    sum(nums...)
+}
+```
+
 ---
 
 ## Structs
 
+Structs are simply a way to group data together. They can be thought of as classes, in other languages with some caveats.
+
 ```go
+package main
+
+import "fmt"
+
 type Person struct {
     Age  int
     Name string
@@ -135,10 +172,16 @@ type Employee struct {
     Person
     ID     int
 }
+
+func main() {
+    p := Employee{Person{"John", 35}, 223341}
+    fmt.Println(p)
+}
 ```
 
 [playground link](https://play.golang.org/p/-HfpOcNYpu)
 
+- No inheritance, only composition.
 - Person is embedded into Employee. Allows direct access to Person's fields from Employee (Employee.Age, etc)
 - Also allows direct access to Person's methods as well (more on methods shortly)
 - Can overwrite the fields from Person by implementing it in Employee. `Employee.Name != Employee.Person.Name`
@@ -154,3 +197,11 @@ func (p Person) SayHi() {
     fmt.Println("Hi! My name is", p.Name)
 }
 ```
+
+---
+
+## resources
+
+- [Go by example](https://gobyexample.com/)
+- [Golang tour](https://tour.golang.org)
+
