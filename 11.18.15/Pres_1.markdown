@@ -232,6 +232,7 @@ func SayHi2(p Person) {
 }
 ```
 
+```go
 func (e Employee) ChangeID(newID int) {
     e.ID = newID
 }
