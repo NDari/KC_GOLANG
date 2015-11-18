@@ -39,9 +39,6 @@ func main() {
 }
 ```
 
-[playground link](https://play.golang.org/p/cwOuObbyZ4)
-
-
 - The "main" name of this package indicates that this will be an executable. Any other name will produce a static library.
 - The importing is done by `import "package"` where the package name in in quotes.
 - The entry point to any Go executable is the `main` function, just like C or C++.
@@ -53,6 +50,8 @@ func main() {
 ---
 
 ## Functions and functional programming
+
+- Functions are first class objects.
 
 ```go
 package main
@@ -95,7 +94,6 @@ func myfilter(f func(int) bool, v []int) []int {
 
 [playground link](https://play.golang.org/p/rnE7aYRGZl)
 
-- Functions are first class objects.
 - Functions can have closures
 
 ```go
@@ -190,6 +188,33 @@ func main() {
 - Can overwrite the fields from Person by implementing it in Employee. `Employee.Name != Employee.Person.Name`
 - This is awful... [lets fix it](https://play.golang.org/p/PKPcmbOg8J)
 - Cannot initialize fields. They are automatically "zero-ed" out.
+- Get around this by hiding the default constructor, and rolling your own.
+
+```go
+package main
+
+import "fmt"
+
+type Person struct {
+    Age  int
+    Name string
+}
+
+type employee struct {
+    Person
+    ID     int
+}
+
+func NewImployee(id int) Employee {
+    return employee{Person{}, ID: id}
+}
+
+func main() {
+    p := NewEmployee(223341}
+    fmt.Println(p)
+}
+```
+
 
 ---
 
@@ -214,8 +239,62 @@ func (e Employee) ChangeID(newID int) {
 
 - The above function does **not** modify the employee. since everything is pass by value, a copy is made.
 - We can [fix this too](https://play.golang.org/p/WBCg6A9bui)
+- Methods can only be defined in the same package that defines the struct :(
 
 ---
+
+## interfaces
+
+Interfaces are a collection of methods implemented by a Struct. This is the way go implements duck typing.
+
+
+```go
+type bro struct {
+    name string
+}
+
+func (b bro) sup() {
+    fmt.Println("sup brah! I am", b.name)
+}
+
+type dude struct {
+    name string
+}
+
+func (d dude) sup() {
+    fmt.Println("Hey Dude! I am", d.name)
+}
+
+type greeter interface {
+    sup()
+}
+
+func greet(g greeter) {
+    g.sup()
+}
+
+func main() {
+    jim := bro{"jim"}
+    joe := dude{"joe"}
+    greet(jim)
+    greet(joe)
+}
+```
+
+[playground link](https://play.golang.org/p/gQLbGB3jHT)
+
+- Interfaces are implicit: if you can do _this_, then you can be used _here_.
+- Can build interfaces that take third-party libraries without modifying them. The compiler still checks for you.
+- The empty interface is a catch all for everything... 
+
+## Channels and Goroutines
+
+- Each is awesome on its own, but together, they make Golang as powerful as it is.
+- Dont communicate through sharing memory, but share memory through communicating.
+- Channels are how processes can communicate between each other.
+- goroutines are "very light weight threads", that can run concurrently.
+
+[a silly example](https://play.golang.org/p/0GXa2IlI9c)
 
 ## resources
 
