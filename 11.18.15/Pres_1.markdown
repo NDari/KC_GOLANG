@@ -65,24 +65,24 @@ func main() {
 	}
 
 	v := []float64{1.0, 2.0, 3.0, 4.0, 5.0}
-	fmt.Println(map(square, v))
+	fmt.Println(mymap(square, v))
 
 	odd := func(i int) bool {
 		return i%2 == 0
 	}
 
 	t := []int{1, 2, 3, 4, 5, 6, 7, 8, 9, 10}
-	fmt.Println(filter(odd, t))
+	fmt.Println(myfilter(odd, t))
 }
 
-func map(f func(float64) float64, v []float64) []float64 {
+func mymap(f func(float64) float64, v []float64) []float64 {
 	for i := 0; i < len(v); i++ {
 		v[i] = f(v[i])
 	}
 	return v
 }
 
-func filter(f func(int) bool, v []int) []int {
+func myfilter(f func(int) bool, v []int) []int {
 	var res []int
 	for i := 0; i < len(v); i++ {
 		if f(v[i]) {
