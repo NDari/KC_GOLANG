@@ -24,6 +24,8 @@ Kansas City Go-lang meetup
 - Functional programming facilities
 - Object oriented programming facilities
 - Very opinionated about... everything.
+- Focused on simplicity, and being as lightweight as possible.
+- This pays off in the tooling.
 
 ---
 
@@ -244,7 +246,7 @@ func (e Employee) ChangeID(newID int) {
 
 ---
 
-## interfaces
+## Interfaces
 
 Interfaces are a collection of methods implemented by a Struct. This is the way go implements duck typing.
 
@@ -257,7 +259,7 @@ type bro struct {
 func (b bro) sup() {
     fmt.Println("sup brah! I am", b.name)
 }
-
+G
 type dude struct {
     name string
 }
@@ -297,7 +299,23 @@ func main() {
 
 [a silly example](https://play.golang.org/p/0GXa2IlI9c)
 
-## resources
+## Tools
+
+- go vet
+- go doc: generate documentation from code. [Example](https://godoc.org/github.com/stretchr/testify/assert)
+- go get: light weight go package manager... of sorts). A good set up for Go:
+
+```bash
+export GOROOT=/usr/local/go
+export GOPATH=$HOME/golib:$HOME/go
+export GOBIN=$HOME/go/bin
+export PATH=$GOBIN:$PATH
+```
+
+- go test: testing and benchmarking. [Example](https://github.com/NDari/numgo)
+- go oracle: Code comprehension tool. [link](https://docs.google.com/document/d/1SLk36YRjjMgKqe490mSRzOPYEDe0Y_WQNRv-EiFYUyw/view)
+
+## Resources
 
 - [Go by example](https://gobyexample.com/)
 - [Golang tour](https://tour.golang.org)
