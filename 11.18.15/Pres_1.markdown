@@ -55,13 +55,45 @@ func main() {
 ## Functions and functional programming
 
 ```go
-func Map(f func(float) float, v []floa64) []float64 {
-    for i := 0; i < len(v); i++ {
-        v[i] = f(v[i])
-    }
-    return v
+package main
+
+import "fmt"
+
+func main() {
+	square := func(i float64) float64 {
+		return i * i
+	}
+
+	v := []float64{1.0, 2.0, 3.0, 4.0, 5.0}
+	fmt.Println(Map(square, v))
+
+	odd := func(i int) bool {
+		return i%2 == 0
+	}
+
+	t := []int{1, 2, 3, 4, 5, 6, 7, 8, 9, 10}
+	fmt.Println(filter(odd, t))
+}
+
+func Map(f func(float64) float64, v []float64) []float64 {
+	for i := 0; i < len(v); i++ {
+		v[i] = f(v[i])
+	}
+	return v
+}
+
+func filter(f func(int) bool, v []int) []int {
+	var res []int
+	for i := 0; i < len(v); i++ {
+		if f(v[i]) {
+			res = append(res, v[i])
+		}
+	}
+	return res
 }
 ```
+
+[playground link](https://play.golang.org/p/rnE7aYRGZl)
 
 - Functions are first class objects.
 - Functions can have [closures](https://play.golang.org/p/barGYk2nhL)
