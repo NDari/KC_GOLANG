@@ -1,0 +1,181 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8" />
+		<title>Should go be your next?</title>
+		<style>
+			body {
+	font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+}
+h1, h2, h3 {
+	font-weight: 400;
+	margin-bottom: 0;
+}
+.remark-slide-content h1 { font-size: 3em; }
+.remark-slide-content h2 { font-size: 2em; }
+.remark-slide-content h3 { font-size: 1.6em; }
+.footnote {
+	position: absolute;
+	bottom: 3em;
+}
+li p { line-height: 1.25em; }
+.red { color: #fa0000; }
+.large { font-size: 2em; }
+a, a > code {
+	color: rgb(249, 38, 114);
+	text-decoration: none;
+}
+code {
+	background: none repeat scroll 0 0 #F8F8FF;
+  border: 1px solid #DEDEDE;
+  border-radius: 3px 	;
+  padding: 0 0.2em;
+}
+.remark-code, .remark-inline-code { font-family: "Bitstream Vera Sans Mono", "Courier", monospace; }
+.remark-code-line-highlighted     { background-color: #373832; }
+.pull-left {
+	float: left;
+	width: 47%;
+}
+.pull-right {
+	float: right;
+	width: 47%;
+}
+.pull-right ~ p {
+	clear: both;
+}
+#slideshow .slide .content code {
+	font-size: 0.8em;
+}
+#slideshow .slide .content pre code {
+	font-size: 0.9em;
+	padding: 15px;
+}
+.main-title, .title {
+	background: #272822;
+	color: #777872;
+	text-shadow: 0 0 20px #333;
+}
+.title h1, .title h2, .main-title h1, .main-title h2 {
+	color: #f3f3f3;
+	line-height: 0.8em;
+}
+/* Custom */
+.remark-code {
+	display: block;
+	padding: 0.5em;
+}
+
+		</style>
+	</head>
+	<body>
+		<textarea id="source">
+# Should go be your next?
+
+Kansas City Go-lang meetup
+
+11/18/2015
+
+---
+
+## A little about me
+
+- Physics background, Started coding in FORTRAN, then Fortran and C
+- Realized that I love programming with Perl
+- Switched to Python for its scientific stack, and better object support
+- switched to Go for the speeeeeed!
+
+---
+
+## What kind of programming language is Go?
+
+- Strong, static types
+- Enforced by a **very** fast compiler
+- Garbage collected
+- Concurrency supported at the language level, in the style of [Communicating Sequential Processes](http://www.usingcsp.com/cspbook.pdf)
+- Functional programming facilities
+- Object oriented programming facilities
+- Very opinionated about... everything.
+
+---
+
+## Obligatory "hello world!"
+
+```go
+package main
+
+import "fmt"
+
+func main() {
+    fmt.Println("Hello, KC Golang!\n")
+}
+```
+
+[playground link](https://play.golang.org/p/cwOuObbyZ4)
+
+
+- The "main" name of this package indicates that this will be an executable. Any other name will produce a static library.
+- The importing is done by `import "package"` where the package name in in quotes.
+- The entry point to any Go executable is the `main` function, just like C or C++.
+- To get an exported item (Function, Struct, etc) out of a package, you use the dot notation
+- The case of the first letter of an item in a package indicates if it is exported or not.
+- All used packages must be imported, **and** all imported packages must be used. [goimports](https://godoc.org/golang.org/x/tools/cmd/goimports)
+- Automatic insertion of semi-colons, like Javascript. Nightmares, anyone? [gofmt](https://golang.org/cmd/gofmt/)
+
+---
+
+## Functions and functional programming
+
+```go
+func Map(f func(float) float, v []floa64) []float64 {
+    for i := 0; i < len(v); i++ {
+        v[i] = f(v[i])
+    }
+    return v
+}
+```
+
+- Functions are first class objects.
+- Functions can have [closures](https://play.golang.org/p/barGYk2nhL)
+
+---
+
+## Structs
+
+```go
+type Person struct {
+    Age  int
+    Name string
+}
+type Employee struct {
+    Person
+    ID     int
+}
+```
+
+[playground link](https://play.golang.org/p/-HfpOcNYpu)
+
+- Person is embedded into Employee. Allows direct access to Person's fields from Employee (Employee.Age, etc)
+- Also allows direct access to Person's methods as well (more on methods shortly)
+- Can overwrite the fields from Person by implementing it in Employee. `Employee.Name != Employee.Person.Name`
+- This is awful... [lets fix it](https://play.golang.org/p/PKPcmbOg8J)
+- Cannot initialize fields. They are automatically "zero-ed" out.
+
+---
+
+## Methods
+
+```go
+func (p Person) SayHi() {
+    fmt.Println("Hi! My name is", p.Name)
+}
+```
+
+		</textarea>
+		<script src="http://gnab.github.io/remark/downloads/remark-latest.min.js"></script>
+		<script>
+			var slideshow = remark.create();
+		</script>
+		<script></script>
+	</body>
+</html>

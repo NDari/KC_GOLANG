@@ -1,0 +1,89 @@
+The power of Interfaces in Go
+Kansas City Go-lang meetup
+19 Apr 2016
+
+Naseer Dari
+Software Engineer, Multi Service
+naseerdari01@gmail.com
+@NaseerDari
+
+* Why interfaces
+
+- Design pattern: Programming to an interface, not an implementation.
+.play one.go
+
+* Why interfaces
+
+- Design pattern: Programming to an interface, not an implementation.
+.play two.go
+
+* Why interfaces
+
+- Design pattern: Programming to an interface, not an implementation.
+.play three.go
+
+* Common implementations
+
+- Explicit interfaces: Java, C#, C++...
+.code unified.java
+
+* Explicit Interface Advantages
+
+- Compiler checks at class and instantiation level
+- Looser coupling
+
+* Explicit Interface Disadvantages
+
+- Still coupled due to explicit implementation
+
+* Common implementations
+
+- Duck typing
+.code hi.py
+
+* Duck typing Advantages
+
+- No need to explicitly implement anything
+- You get it for "free"
+
+* Duck typing Disadvantages
+
+- No type safety is even bigger of an issue here
+
+* Go's implicit interfaces
+
+- Fully type checked AND implicit
+.play three.go
+
+* Looser coupling
+
+.code four.go
+
+* Looser coupling
+
+.code five.go
+
+* Looser coupling
+
+.code six.go
+
+* Aside: Type and value of interfaces
+
+- An interface' value has two parts, dynamic part and dynamic value
+
+.code seven.go
+
+* The Gotcha
+- An interface with a nil dynamic value is not nil
+
+.play nine.go
+
+* The Gotcha
+
+- An interface with a nil dynamic value is not nil
+
+.play eight.go
+
+* The empty interface
+
+.code ten.go
