@@ -1,0 +1,11 @@
+https://peter.bourgon.org/go-best-practices-2016/
+
+https://www.reddit.com/r/golang/comments/4h9qjw/go_best_practices_six_years_in
+
+https://blog.rubylearning.com/best-practices-for-a-new-go-developer-8660384302fc#.w1w9gxtd3
+
+https://www.reddit.com/r/golang/comments/3j70wv/best_practices_for_a_new_go_developer/
+
+http://blog.8thlight.com/uncle-bob/2012/08/13/the-clean-architecture.html
+
+http://manuel.kiessling.net/2012/09/28/applying-the-clean-architecture-to-go-applications/
