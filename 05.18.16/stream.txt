@@ -1,0 +1,44 @@
+- do not use symlinks anywhere
+    - except for your go compiler installation
+    - go commands often fail without reason on symlinks
+
+- godep does not work in a team
+    - Noone besides the original dev was able to update dependencies
+    - Changes to godep vendor didn't always work as expected for other devs
+    - "magic command" `go install ./...` frequently used to get moving forward
+
+- glide is a the bees knees, gb also has a large following
+    - glide is similar to Gemfiles in Ruby
+    - gb is a full-stop replacement for the golang CLI build tools
+
+- gometalinter
+    - go vet and errcheck in particular are handy
+    - We don't use dupl, goconst, golint
+    - dupl? golang lends itself to some duplication. Worst offenders for us are test suites
+    - goconst tries to pull magic strings into named variables (not a huge deal for us)
+    - golint screams the most about missing godoc comments (we care, but don't want it breaking a build)
+
+- hook goimports and gofmt into your IDE/workflow
+    - One caveat on goimports: it imports packages alphabetically!
+    - If two packages named the same, then you might pull in the wrong one
+
+- Use named return identifiers when returning primitives
+
+- treat global packages as interfaces
+    - Wrap fmt.Printf() in a logging interface
+
+- parallelism is not a free lunch
+    - Oftentimes, kicking off more go routines will not grant you a performance boost
+    - You wanted more parallelism, that's not what goroutines provide
+
+- use testify to beef up the stdlib testing tools
+    - testify suite in particular get used everywhere
+
+- don't rely only on struct initializer syntax sugar, provide struct constructors
+    - Guaranteed interface to provide usefully populated structs
+
+- remember that go is just another programming language
+    - It has strong opinions
+    - It doesn't negate 50+ years of learning and design knowledge
+    - Language agnostic 'best practices' from computer science still apply
+        - Inversion of control, separation of concerns, programming against an interface, etc

@@ -1,0 +1,98 @@
+Golang Best Practices
+Kansas City Go-lang Meetup
+
+18 May 2016
+
+Tim Kretschmer
+Software Engineer, C2FO
+tim.kretschmer@c2fo.com
+github.com/tim-kretschmer-c2fo
+github.com/xbigtk13x
+
+
+* Workspace
+
+.image media/workspace.png 400 _
+
+* Symlinks
+
+They work until they don't.
+
+.image media/symlinks.jpg
+
+* Godep
+
+It doesn't work for teams
+
+.image media/godep.jpg
+
+* Glide
+
+Easy to share changes
+
+Optional source vendoring
+
+Straightforward library updates
+
+.image media/glide.png
+
+* Gometalinter
+
+Supports seventeen checks by default
+
+Opt out of anything you don't care about
+
+- We don't care about dupl, goconst, or golint
+
+.image media/gometalinter.jpeg
+
+* Style and Automation
+
+goimports makes writting code easier
+
+gofmt makes reading code easier
+
+.image media/style-and-automation.png
+
+* Programming
+
+.image media/programming.png
+
+* Return values
+
+Always name a returned primitive
+
+.code -numbers -edit code/named-return-values.go
+
+* Global functions
+
+Wrap these in an interface
+
+.code -numbers -edit code/global-functions.go
+
+* Parallelism
+
+Kicking off goroutines doesn't guarantee a performance increase
+
+.code -numbers -edit code/parallelism.go
+
+* Struct Initialization
+
+Do not build structs via property assignment or syntactical sugar
+
+.code -numbers -edit code/struct-init.go
+
+* Testing
+
+Standard library test packages and stretchr/testify
+
+.code -numbers -edit code/testify.go
+
+* Industry Standards
+
+Language agnostic best practices still apply
+
+- Inversion of control
+- Separation of concerns
+- Programming to an interface
+- etc
