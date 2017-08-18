@@ -1,0 +1,76 @@
+Channels: True power of concurrency in Go
+Kansas City Go-lang meetup
+21 Sep 2016
+
+Naseer Dari
+Software Engineer, Multi Service
+naseerdari01@gmail.com
+@NaseerDari
+
+* Go's concurrency story: goroutines
+
+- similar but not the same as threads, processes, green threads (I'll use workers)
+- an *almost* unique combination of traits (light weight, closure, others..)
+  - very similar to Erlang/Elixirs processes
+- most languages have similar things and they are all easy to use
+
+* Go's concurrency story: Channels
+
+- most languages dont offer or make it easy for your workers to talk to each other
+- communication between workers is not trivial due to separation of stacks
+- a great deal of overloading is done with channels
+- will will try to untangle some tonight!
+
+* Part 1: Syntax and usage - unbuffered channels
+
+.play one.go
+
+- Important note about copying and channels
+
+* Aside: receive from a closed channel
+
+- what happens here?
+
+.play closedRec.go
+
+- So what do we do to prevent getting garbage?
+
+* A common pattern: The pipeline
+
+.play two.go
+
+* Aside: why the $&%! would you do this?
+
+- cant you just do this?
+
+.play three.go
+
+* Enter the waitGroup
+
+- and easy way to create a pool of workers
+- these workers can all consume from the same channel
+- add workers to any stage of the pipe that is the bottleneck
+
+* Part 1: Syntax and usage - buffered channels
+
+.play four.go
+
+* Part 1: Channels are first class citizens
+
+.play five.go
+
+* Part 1: Anatomy of a channel
+
+.link http://dmitryvorobev.blogspot.com/2016/08/golang-channels-implementation.html Read this blog post!!
+
+* Part 2: Channel Patterns - Select over channels
+
+.play launch.go
+
+* Part 2: Channel patterns - killing goroutines
+
+- we already have all the tools
+- send a "done" channel to all the goroutines
+- goroutines will do a *non-blocking select* to carry out their work, while checking the done
+- all goroutines terminate when the done channel is closed as they can now receive from it.
+
