@@ -8,7 +8,7 @@ Kansas City Go-lang Meetup
 
 ## Admin stuff
 
-- This presentation is in markdown, and it is uploaded to the [KC_GOLAMG repo](https://github.com/NDari/KC_GOLANG)
+- This presentation is in markdown, and it is uploaded to the [KC_GOLANG repo](https://github.com/NDari/KC_GOLANG)
 - Built with [markdown-to-slides](https://github.com/partageit/markdown-to-slides)
 - Will make the repository under its own name-space, and share access with the admins.
 - If you have any old presentations that you want to put here, please let me know to make a PR!
@@ -19,7 +19,7 @@ Kansas City Go-lang Meetup
 ## The "mature point of view"
 
 - What is a microservice anyway?
-  - Taking ques from OOP
+  - Taking cues from OOP
   - [Look at this talk](https://www.youtube.com/watch?v=JXEjAwNWays&t)
 - What are the advantages of microservices?
   - From that video: Solves org problems, causes tech problems.
@@ -33,7 +33,7 @@ Kansas City Go-lang Meetup
     logging, license issues, CI/CD pipelines, API documentation, etc.
 - When should you use a microservice?
   - Maybe monolith first is a good approach...
-- Have a sit. have a good logical discussion about your needs, and decide!
+- Have a sit. Have a good logical discussion about your needs, and decide!
 
 ---
 
@@ -197,8 +197,4 @@ You can also roll your own!
 ---
 
 ## Demo Time 
-
-
-
-
 
